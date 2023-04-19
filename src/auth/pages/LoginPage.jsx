@@ -8,15 +8,17 @@ import { useForm } from "../../hooks/useForm";
 import { chekingAuthentication,startgGoogleSigIn,startLoginWithEmailPassword } from "../../store/auth/";
 import { green } from "@mui/material/colors";
 
+const formData = {
+  email: '',
+  password : ''
+}
+
 export const LoginPage = () => {
     
    const {status,errrorMessage} = useSelector(state => state.auth);  
     
    const dispatch = useDispatch();
-   const {email, password, onInputChange , formState} = useForm({
-    email: 'erickescobar2500@gmail.com',
-    password : '123456'
-  });
+   const {email, password, onInputChange , formState} = useForm(formData);
 
   const isAuthenticating = useMemo(()=> status === 'cheking',[status]);
 

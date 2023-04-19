@@ -2,6 +2,7 @@ import { async } from "@firebase/util";
 import { LogoDevTwoTone } from "@mui/icons-material";
 import { loginWithEmailPassword, logoutFirebase, registerUserWhithEmailpassword, singInWithGoogle } from "../../firebase/providers";
 import { login, chekingCredentials, logouth } from "./"
+import { clearNoteLogout } from "../journal";
 
 export const chekingAuthentication = (email, password) =>{
    return async (dispatch) =>{
@@ -53,6 +54,7 @@ export const startLoginWithEmailPassword = ({email, password})=>{
 export const startLogouth = ()=>{
   return async(dispatch) =>{
     await logoutFirebase();
+    dispatch(clearNoteLogout())
     dispatch(logouth({}));
   }
 }
